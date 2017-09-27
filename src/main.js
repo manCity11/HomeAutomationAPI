@@ -4,6 +4,7 @@ import expressGraphQL from 'express-graphql';
 
 // Graphql schema
 //
+import deviceSchema from './graphql/device.schema';
 
 const app = express();
 
