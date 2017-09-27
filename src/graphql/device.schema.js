@@ -146,5 +146,5 @@ const mutation = new GraphQLObjectType({
 
 export default new GraphQLSchema({
     query: DeviceRootQuery,
-    //mutation: mutation
+    mutation: mutation
 });

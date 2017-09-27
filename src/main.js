@@ -23,7 +23,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/graphql', expressGraphQL({
-    schema: '',
+    schema: deviceSchema,
     graphiql: true
 }));
 
