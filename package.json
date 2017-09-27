@@ -1,0 +1,35 @@
+{
+  "name": "home-automation-api",
+  "version": "1.0.0",
+  "description": "API with graphQL for node.js server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon config/dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manCity11/HomeAutomationAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manCity11/HomeAutomationAPI/issues"
+  },
+  "homepage": "https://github.com/manCity11/HomeAutomationAPI#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.2",
+    "express": "^4.15.5",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.11.4",
+    "json-server": "^0.12.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.12.1"
+  }
+}
