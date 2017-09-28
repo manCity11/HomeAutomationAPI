@@ -1,4 +1,4 @@
-const host = "http://localhost:8000/";
+const host = "http://localhost:3000/";
 const API_URL = {
     DEVICE: host.concat('devices')
 }
