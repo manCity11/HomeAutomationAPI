@@ -90,15 +90,16 @@ const mutation = new GraphQLObjectType({
                     type: new GraphQLNonNull(GraphQLInt)
                 }
             },
-            resolve(parentValue, args) {
-                // TODO READ PIN NUMBER
-                
+            resolve(parentValue, args) {   
                 return axios
-                    .post(API_URL, {
+                    .post(`${API_URL.DEVICE}`, {
                         name: args.name,
                         pinNumber: args.pinNumber
                     })
-                    .then(response => response.data);
+                    .then(response => {
+                        let newDevice = response.data;
+                        newDevice.isOn = Math.floor(Math.random() * 1) === 1;
+                    });
             }
         },
         deleteDevice: {
@@ -110,7 +111,7 @@ const mutation = new GraphQLObjectType({
             },
             resolve(parentValue, args) {
                 return axios
-                    .delete(API_URL.concat(`/${args.id}`))
+                    .delete(`${API_URL.DEVICE}/${args.id}`)
                     .then(response => response.data);
             }
         },
@@ -129,8 +130,11 @@ const mutation = new GraphQLObjectType({
             },
             resolve(parentValue, args) {
                 return axios
-                    .patch(API_URL.concat(`/${args.id}`, args))
-                    .then(response => response.data);
+                    .patch(`${API_URL.DEVICE}/${args.id}`, args)
+                    .then(response => {
+                        let modifiedDevice = response.data;
+                        newDevice.isOn = Math.floor(Math.random() * 1) === 1;
+                    });
             }
         },
         deviceOnOff: {
@@ -147,10 +151,25 @@ const mutation = new GraphQLObjectType({
                 // Optimization check if the pin if valid
                 if(args.isOn) {
                     //Switch the device on
+                    return axios
+                        .get(`${API_URL.DEVICE}/${args.id}`)
+                        .then(response => {
+                            let returnDevice = response.data;
+                            returnDevice.isOn = true;
+
+                            return returnDevice;
+                        });
                 } else {
                     //Switch the device off
+                    return axios
+                    .get(`${API_URL.DEVICE}/${args.id}`)
+                    .then(response => {
+                        let returnDevice = response.data;
+                        returnDevice.isOn = false;
+
+                        return returnDevice;
+                    });
                 }
-                // return device type
             }
         }
     }
