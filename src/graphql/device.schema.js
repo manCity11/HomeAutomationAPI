@@ -48,16 +48,28 @@ const DeviceRootQuery = new GraphQLObjectType({
             },
             resolve(parentValue, args) {
                 return axios
-                    .get(API_URL.concat(`/${args.id}`))
-                    .then(response => response.data);
-            },
-            devices: {
-                type: new GraphQLList(DeviceType),
-                resolve(parentValue, args) {
-                    return axios
-                        .get(API_URL)
-                        .then(response => response.data);
-                }
+                    .get(`${API_URL.DEVICE}/${args.id}`)
+                    .then(response => {
+                        let returnDevice = response.data;
+                        returnDevice.isOn = Math.floor(Math.random() * 1) === 1;
+
+                        return returnDevice;
+                    });
+            }
+        },
+        devices: {
+            type: new GraphQLList(DeviceType),
+            resolve(parentValue, args) {
+                return axios
+                    .get(`${API_URL.DEVICE}`)
+                    .then(response => {
+                        let listDevices = response.data;
+
+                        return listDevices.map(device => {
+                            device.isOn = Math.floor(Math.random() * 1) === 1;
+                            return device;
+                        });
+                    });
             }
         }
     })
