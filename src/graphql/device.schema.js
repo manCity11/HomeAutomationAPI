@@ -51,6 +51,7 @@ const DeviceRootQuery = new GraphQLObjectType({
                     .get(`${API_URL.DEVICE}/${args.id}`)
                     .then(response => {
                         let returnDevice = response.data;
+                        // emulate pin operation
                         returnDevice.isOn = Math.floor(Math.random() * 1) === 1;
 
                         return returnDevice;
@@ -66,7 +67,9 @@ const DeviceRootQuery = new GraphQLObjectType({
                         let listDevices = response.data;
 
                         return listDevices.map(device => {
+                            // emulate pin operation
                             device.isOn = Math.floor(Math.random() * 1) === 1;
+
                             return device;
                         });
                     });
@@ -98,7 +101,10 @@ const mutation = new GraphQLObjectType({
                     })
                     .then(response => {
                         let newDevice = response.data;
+                        // emulate pin operation
                         newDevice.isOn = Math.floor(Math.random() * 1) === 1;
+
+                        return newDevice;
                     });
             }
         },
@@ -133,7 +139,10 @@ const mutation = new GraphQLObjectType({
                     .patch(`${API_URL.DEVICE}/${args.id}`, args)
                     .then(response => {
                         let modifiedDevice = response.data;
+                        // emulate pin operation
                         newDevice.isOn = Math.floor(Math.random() * 1) === 1;
+
+                        return modifiedDevice;
                     });
             }
         },
@@ -155,6 +164,7 @@ const mutation = new GraphQLObjectType({
                         .get(`${API_URL.DEVICE}/${args.id}`)
                         .then(response => {
                             let returnDevice = response.data;
+                            // emulate pin operation
                             returnDevice.isOn = true;
 
                             return returnDevice;
@@ -165,6 +175,7 @@ const mutation = new GraphQLObjectType({
                     .get(`${API_URL.DEVICE}/${args.id}`)
                     .then(response => {
                         let returnDevice = response.data;
+                        // emulate pin operation
                         returnDevice.isOn = false;
 
                         return returnDevice;
