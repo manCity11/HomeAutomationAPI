@@ -4,6 +4,7 @@ import expressGraphQL from 'express-graphql';
 
 // Graphql schema
 //
+import deviceSchema from './graphql/device.schema';
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/graphql', expressGraphQL({
-    schema: '',
+    schema: deviceSchema,
     graphiql: true
 }));
 
