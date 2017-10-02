@@ -105,7 +105,7 @@ describe('Beginning of the tests', function() {
 
     describe('deviceOnOff Method tests', () => {
         it('should have a status equal to 200 and switch on the device', () => {
-            request(`${API_URL.DEVICE}?query=mutation{deviceOnOff(id:"1",:pinNumber, isOn: true)}`, (error, response, body) => {
+            request(`${API_URL.DEVICE}?query=mutation{deviceOnOff(id:"1",pinNumber:3, isOn:true)}`, (error, response, body) => {
                 let device = body;
                 expect(response.statusCode).to.equal(200);
                 expect(response.body.isOn).to.equal(true);
@@ -113,7 +113,7 @@ describe('Beginning of the tests', function() {
         });
 
         it('should have a status equal to 200 and switch off the device', () => {
-            request(`${API_URL.DEVICE}?query=mutation{deviceOnOff(id:"1",:pinNumber, isOn: false)}`, (error, response, body) => {
+            request(`${API_URL.DEVICE}?query=mutation{deviceOnOff(id:"1",pinNumber:3, isOn:false)}`, (error, response, body) => {
                 let device = body;
                 expect(response.statusCode).to.equal(200);
                 expect(response.body.isOn).to.equal(false);
