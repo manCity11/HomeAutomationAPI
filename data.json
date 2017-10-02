@@ -1,19 +1,19 @@
 {
-    "devices": [
-      {
-        "id": "1",
-        "name": "Bedroom Lamp 1",
-        "pinNumber": 3
-      },
-      {
-        "id": "2",
-        "name": "Coffe Machine",
-        "pinNumber": 6
-      },
-      {
-        "id": "3",
-        "name": "Heater",
-        "pinNumber": 7
-      }
-    ]
-  }
+  "devices": [
+    {
+      "id": "1",
+      "name": "Bedroom Lamp 1",
+      "pinNumber": 3
+    },
+    {
+      "id": "2",
+      "name": "Coffe Machine",
+      "pinNumber": 6
+    },
+    {
+      "id": "3",
+      "name": "Coffee Machine",
+      "pinNumber": 7
+    }
+  ]
+}
