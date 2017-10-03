@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser  from 'body-parser';
 import expressGraphQL from 'express-graphql';
+import cors from 'cors';
 
 // Graphql schema
 //
@@ -18,11 +19,11 @@ app.use(bodyParser.urlencoded({
 
 // Routing
 //
-app.get('/', (request, response) => {
+app.get('/', cors(), (request, response) => {
     response.end("It works!!!")
 });
 
-app.use('/graphql', expressGraphQL({
+app.use('/graphql', cors(), expressGraphQL({
     schema: deviceSchema,
     graphiql: true
 }));

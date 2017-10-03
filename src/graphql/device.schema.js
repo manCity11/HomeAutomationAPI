@@ -140,7 +140,7 @@ const mutation = new GraphQLObjectType({
                     .then(response => {
                         let modifiedDevice = response.data;
                         // emulate pin operation
-                        newDevice.isOn = Math.floor(Math.random() * 1) === 1;
+                        modifiedDevice.isOn = Math.floor(Math.random() * 1) === 1;
 
                         return modifiedDevice;
                     });
